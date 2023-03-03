@@ -1,7 +1,25 @@
-#include <iostream>
-#include "message.h"
-using namespace std;
+﻿#include "message.h"
+#include <regex>
+#include <stdexcept>
 
-void message::printMessage(){
-	cout << "Hello World\n";
+Circle parse_circle(const std::string& str) {
+    const std::regex pattern(R"(circle\((-?\d+(\.\d+)?)[\s,]+(-?\d+(\.\d+)?),\s*(\d+(\.\d+)?)\))", std::regex::icase);
+    std::smatch matches;
+    if (std::regex_search(str, matches, pattern)) {
+        Circle result;
+        try {
+            result.center_x = std::stod(matches[1]);
+            result.center_y = std::stod(matches[3]);
+            result.radius = std::stod(matches[5]);
+            return result;
+        }
+        catch (const std::exception& e) {
+            throw std::invalid_argument("Invalid syntax");
+        }
+    }
+    else {
+        throw std::invalid_argument("Invalid syntax");
+    }
 }
+
+

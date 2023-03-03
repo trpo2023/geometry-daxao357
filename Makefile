@@ -1,11 +1,18 @@
+CC = g++
+CFLAGS = -Wall -Wextra
+
 output: main.o message.o
-	g++ main.o message.o -o output
+	$(CC) $(CFLAGS) main.o message.o -o output
 
 main.o: main.cpp
-	g++ -c main.cpp
+	$(CC) $(CFLAGS) -c main.cpp
 
-prnt.o: message.cpp message.h
-	g++ -c message.cpp
+message.o: message.cpp message.h
+	$(CC) $(CFLAGS) -c message.cpp
+
+run: output
+	./output
+
 
 clean:
 	rm *.o output

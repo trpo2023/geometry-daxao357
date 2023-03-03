@@ -1,11 +1,11 @@
-#ifndef MESSAGE_H
-#define MESSAGE_H
+#pragma once
 
-class message{
+#include <string>
 
-public:
-	void printMessage();
+struct Circle {
+    double center_x;
+    double center_y;
+    double radius;
 };
 
-#endif // MESSAGE_H
-
+Circle parse_circle(const std::string& str);
