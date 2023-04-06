@@ -22,4 +22,12 @@ Circle parse_circle(const std::string& str) {
     }
 }
 
+double compute_area(double radius) {
+    return 3.14159 * radius * radius;
+}
+
+double compute_perimeter(double radius) {
+    return 2 * 3.14159 * radius;
+}
+
 
