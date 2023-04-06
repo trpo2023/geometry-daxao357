@@ -6,3 +6,4 @@ bin/
 *.txt
 ! input.txt
 output
+.vs/

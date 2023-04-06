@@ -1,6 +1,6 @@
 #include <iostream>
 #include <string>
-#include "message.h"
+#include "../lib/message.h"
 
 int main() {
     std::string input;

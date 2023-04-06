@@ -1,18 +1,18 @@
 CC = g++
 CFLAGS = -Wall -Wextra
 
-output: main.o message.o
-	$(CC) $(CFLAGS) main.o message.o -o output
+./bin/output: ./obj/main.o ./obj/message.o
+	$(CC) $(CFLAGS) ./obj/main.o ./obj/message.o -o ./bin/output
 
-main.o: main.cpp
-	$(CC) $(CFLAGS) -c main.cpp
+./obj/main.o: ./src/message/main.cpp
+	$(CC) $(CFLAGS) -c ./src/message/main.cpp -o ./obj/main.o
 
-message.o: message.cpp message.h
-	$(CC) $(CFLAGS) -c message.cpp
+./obj/message.o: ./src/lib/message.cpp ./src/lib/message.h
+	$(CC) $(CFLAGS) -c ./src/lib/message.cpp -o ./obj/message.o
 
-run: output
-	./output
-
+run: ./bin/output
+	./bin/output
 
 clean:
-	rm *.o output
+	rm -f ./bin/output ./obj/*.o 
+		
